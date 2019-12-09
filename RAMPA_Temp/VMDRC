@@ -1,0 +1,112 @@
+#!/bin/bash
+
+
+#......................................#
+
+# Este file es el startup del VMD, se carga siempre al comienzo.
+# Si se desea realizar una modificación, se puede cargar nuevamente
+# haciendo en tkconsole :
+# play "~/.vmdrc"
+# ...................MAIN: Display ... #
+
+menu main on
+display resize 700 700  
+menu main move 5 5
+display projection Orthographic
+animate goto start
+animate style Loop
+menu color on
+color Labels Bonds black
+after idle { menu tkcon on }
+
+
+# Cargar una Visualización
+
+user add key N {
+
+mol modselect 0 0 name Ni
+mol modstyle 0 0 VDW 1.000000 12.000000
+
+color Display Background white
+display depthcue off
+
+}
+
+
+
+#--------------
+# Radio de Giro
+#--------------
+ proc RGiro {{sel all}} {
+  # make sure this is a proper selection and has atoms
+  set sel [atomselect top $sel]
+  if {[$sel num] <= 0} {
+    error "gyr_radius: must have at least one atom in selection"
+  }
+  # gyration is sqrt( sum((r(i) - r(center_of_mass))^2) / N)
+  set com [measure center $sel ]
+  set sum 0
+  foreach coord [$sel get {x y z}] {
+    set sum [vecadd $sum [veclength2 [vecsub $coord $com]]]
+  }
+  return [expr sqrt($sum / ([$sel num] + 0.0))]
+}
+
+#Applying this in TCL console
+#set sel [atomselect top all]
+#gyr_radius $sel
+
+
+#--------------
+# Obtener las velocidades en un un archivo xyz
+#--------------
+
+proc vels2file {sel {file velocity.xyz} } {
+set nf [molinfo top get numframes ]
+set natom [$sel num]
+
+set outfile [open "$file" w]
+
+for { set j 0 } { $j < $nf } { incr j } {
+$sel frame $j 
+set names [$sel get name]
+set vels [$sel get {vx vy vz}]
+puts $outfile "$natom"
+puts $outfile "      "
+for { set i 0 } { $i < $natom } { incr i } {
+ puts $outfile "[lindex $names $i]\t[lindex $vels $i]"
+}
+}  
+
+close $outfile
+
+}
+
+
+
+proc alOrigen { selection  selection2 } {
+
+    set Nxyz [measure center $selection2]
+
+    set mNxyz [vecscale $Nxyz -1 ]
+    
+    $selection moveby $mNxyz 
+
+ 
+ }
+
+
+
+    
+user add key V {
+
+set NP [atomselect top all]
+
+
+puts "Generando Archivo con las velocidades"
+vels2file $NP vels_NP.xyz
+
+
+
+}   
+

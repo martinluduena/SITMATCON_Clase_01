@@ -1,0 +1,21 @@
+MODULE mod_drive_files
+contains
+ SUBROUTINE open_file(jj,files)                    
+ IMPLICIT NONE                                     
+ INTEGER,intent(in) ::jj                           
+ INTEGER :: ierror                                 
+ CHARACTER(len=60),dimension(5),intent(in):: files 
+ OPEN(UNIT=123,file=trim(files(jj)),IOSTAT=ierror) 
+ END SUBROUTINE open_file                          
+                                                   
+ SUBROUTINE rewind_file()                          
+ rewind(123)                                       
+ END SUBROUTINE                                    
+                                                   
+ SUBROUTINE close_file()                           
+ close(123)                                        
+ END SUBROUTINE  
+
+END MODULE mod_drive_files 
+                      
+                      

@@ -1,0 +1,202 @@
+!Este Módulo calcula la energía de una molecula en una trayctoria dada.
+MODULE mod_TE
+USE mod_count_line
+integer,parameter,private :: dp=kind(0.0d0)
+
+
+INTEGER ::  NATOM,&  !Atomos totales
+            NMET,& !Atomos metalicos
+            NaxMOL,& !Atomos por Molecula
+            NMOL,&   !Index de Molecula de Seguir
+            NCAP     !=NATOM-NMETAL-NaxMOL 
+INTEGER,DIMENSION(:),ALLOCATABLE :: Z,MOL,& 
+                                    ITYPE
+
+REAL(dp),DIMENSION(:),ALLOCATABLE :: RX,RY,RZ,&
+                                     EPSIL,SIGMA
+
+REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMOL,RYMOL,RZMOL  !COORDENADAS DE LA MOLECULA A SEGUIR.
+REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMET,RYMET,RZMET  !COORDENADAS DE LA MOLECULA A SEGUIR.
+REAL(dp),DIMENSION(:),ALLOCATABLE :: RXCAP,RYCAP,RZCAP  !COORDENADAS DE LA MOLECULA A SEGUIR.
+                                   
+
+CONTAINS
+
+
+SUBROUTINE doTE(unit_file,name_files)
+implicit none
+
+                                  
+integer,intent(in) :: unit_file
+CHARACTER(len=*),dimension(5),intent(in) :: name_files ! poniendo len=* entra
+                                                       !el character entra con la longitud 
+                                                       !trimiada que le entre
+                                                       !como variable
+                                                       !dummy(entra por la
+                                                       !subroutina)
+
+INTEGER :: i,j,k  !Contadores
+INTEGER :: aux1,aux2
+INTEGER :: jmet,jmol,jcap
+
+!...........................
+open(561,file="input.dat")
+
+READ(561,*) !Leyenda de la targeta
+READ(561,*) NATOM,NMET,NaxMOL,NMOL
+READ(561,*)
+READ(561,*)
+
+NCAP=NATOM-NMET-NaxMOL
+CALL ALLOCATER()
+
+aux1=NMET+(NMOL-1)*NaxMOL+1
+aux2=NMET+NMOL*NaxMOL
+
+jmet=0;jmol=0;jcap=0
+
+DO i=1,NATOM
+  READ(561,*) Z(i),RX(i),RY(i),RZ(i),EPSIL(i),SIGMA(i),MOL(i)
+
+  SELECT CASE(Z(i))
+        case(6);ITYPE(i)='C'
+        case(7);ITYPE(i)='N'
+        case(16);ITYPE(i)='S'
+        case(79);ITYPE(i)='Au'
+        case default;write(*,*)'Warning'
+  END SELECT  
+
+
+ IF(i>=aux1.and.i<=aux2)THEN
+  !MOLECULA
+       jmol=jmol+1
+       write(300,*) jmol,i
+       RXMOL(jmol)= RX(i) 
+       RYMOL(jmol)= RY(i)
+       RZMOL(jmol)= RZ(i) 
+ ELSE
+
+      IF(MOL(i)==0)THEN
+        !METAL
+        jmet=jmet+1
+         RXMET(jmet)=RX(i);RYMET(jmet)=RY(i);RZMET(jmet)=RZ(i)        
+       ELSE
+        !CAPPING ORGANICO
+        jcap=jcap+1
+        write(300,*) jcap,i
+        RXCAP(jcap)= RX(i) 
+        RYCAP(jcap)= RY(i)
+        RZCAP(jcap)= RZ(i) 
+       ENDIF 
+
+ ENDIF
+    
+ENDDO
+
+
+    
+stop
+
+                                  
+END SUBROUTINE doTE
+!............................................................................................
+
+!SUBROUTINE INTRAMOL()
+!implicit none
+!CALL STRECHING()
+!ENDDO
+!END SUBROUTINE INTRAMOL  
+
+
+
+
+
+
+
+
+
+
+
+
+
+!.............................................................................................
+SUBROUTINE ALLOCATER()
+
+
+ALLOCATE(Z(1:NATOM))
+ALLOCATE(ITYPE(1:NATOM))
+ALLOCATE(MOL(1:NATOM))
+
+
+ALLOCATE(RX(1:NATOM),RY(1:NATOM),RZ(1:NATOM))
+ALLOCATE(EPSIL(1:NATOM),SIGMA(1:NATOM))
+
+
+ALLOCATE(RXMOL(1:NaxMOL),RYMOL(1:NaxMOL),RZMOL(1:NaxMOL))
+ALLOCATE(RXMET(1:NMET),RYMET(1:NMET),RZMET(1:NMET))               
+ALLOCATE(RXCAP(1:NCAP),RYCAP(1:NCAP),RZCAP(1:NCAP))
+RETURN
+END SUBROUTINE
+!.............................................................................................
+SUBROUTINE cm(k,natom,nconfig,ntot,rx,ry,rz,rcm) 
+ implicit none 
+ integer,intent(in) :: k,natom,nconfig,ntot
+ real(dp),dimension(nconfig*ntot),intent(in) :: rx,ry,rz    
+ real(dp),dimension(3),intent(inout) :: rcm 
+ real(dp) :: xcm,ycm,zcm
+ integer :: i,j
+
+ xcm=0.0_dp;ycm=0.d0;zcm=0.d0   
+ do i=(k-1)*natom+1,k*natom
+  xcm=xcm+rx(i)
+  ycm=ycm+ry(i)
+  zcm=zcm+rz(i)
+ enddo
+ rcm(1)=xcm/real(natom);rcm(2)=ycm/real(natom);rcm(3)=zcm/real(natom)   
+ END SUBROUTINE
+!............................................................................................                 
+ 
+SUBROUTINE dist_r(k,nconfig,natom,ntot,nbin,rx,ry,rz,rr,rcm,delr,rhist,Hist)
+ implicit none
+ integer,intent(in) :: k,nconfig,natom,ntot,nbin
+ real(dp),dimension(nconfig*ntot),intent(in) :: rx,ry,rz
+ real(dp),dimension(natom),intent(out)  :: rr          
+ real(dp),dimension(3),intent(inout) :: rcm            
+ real(dp),intent(in)   :: rhist
+ real(dp) :: rrx,rry,rrz
+ integer,intent(inout) :: Hist(nbin)
+ real(dp),intent(in)  :: delr
+ integer :: inb
+ integer :: i,j
+                                       
+ j=0                                  
+ do i=(k-1)*natom+1,k*natom           
+ j=j+1                                
+ rrx=rx(i)-rcm(1)
+ rry=ry(i)-rcm(2)                     
+ rrz=rz(i)-rcm(3)                     
+ rr(j)=dsqrt(rrx*rrx+rry*rry+rrz*rrz) 
+ enddo                                
+  
+ do i=1,natom
+ inb=int(rr(i)/delr)+1
+ Hist(inb)=Hist(inb)+1 
+ enddo
+ END SUBROUTINE
+!............................................................................................ 
+
+SUBROUTINE jump_lines(nblanco,ntot)
+IMPLICIT NONE
+INTEGER :: i,j,ierror
+INTEGER :: nblanco,ntot
+DO j=1,nblanco  !Adelanto las Configuraciones que no quiero que entren en el promedio
+ READ(123,*, IOSTAT = ierror)                                                        
+ READ(123,*, IOSTAT = ierror)                                                        
+  DO i=1,ntot                                                                        
+  READ(123,*, IOSTAT = ierror)                                                       
+  ENDDO                                                                              
+ENDDO                                                                                
+WRITE(*,*)"Paso el Blanco",nblanco 
+END SUBROUTINE jump_lines
+
+ END MODULE mod_TE

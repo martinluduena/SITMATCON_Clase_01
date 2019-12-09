@@ -1,0 +1,338 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+10	input_parce.f90	/^10  last=verify(char,space\/\/tab,back=.true.)$/;"	l	subroutine:read_line	file:
+1050	mod_FEFF.f90	/^1050 FORMAT(a2,x,3(F10.6,x))$/;"	l	subroutine:doFEFFinp	file:
+11	mod_ran2.f90	/^11    CONTINUE$/;"	l	function:ran2	file:
+13	mod_DoS_2PT.f90	/^13  format(f19.4,x,4(f16.10,x))$/;"	l	subroutine:doDoS	file:
+13	mod_low_DoS.f90	/^13  format(f19.4,x,4(f16.10,x))$/;"	l	subroutine:doDoSlow	file:
+57	mod_DoS_2PT.f90	/^57  format(4(f14.8,x))$/;"	l	subroutine:doDoS	file:
+57	mod_low_DoS.f90	/^57  format(4(f14.8,x))$/;"	l	subroutine:doDoSlow	file:
+900	input_parce.f90	/^900 if (more .and. m .gt. 1) then$/;"	l	subroutine:read_line	file:
+99	input_parce.f90	/^99 a=0d0$/;"	l	subroutine:read_double	file:
+99	input_parce.f90	/^99 i=0$/;"	l	subroutine:readi	file:
+A2PT	mod_DoS_2PT.f90	/^ real(dp)  :: A2PT /;"	v	module:mod_DoS_2PT
+A2PT	mod_low_DoS.f90	/^ real(dp)  :: A2PT /;"	v	module:mod_DoS_low
+ADoS	mod_DoS_2PT.f90	/^ real(dp)  :: ADoS /;"	v	module:mod_DoS_2PT
+ADoS	mod_low_DoS.f90	/^ real(dp)  :: ADoS /;"	v	module:mod_DoS_low
+ALLOCATER	mod_DoS_2PT.f90	/^SUBROUTINE ALLOCATER(/;"	s	module:mod_DoS_2PT
+ALLOCATER	mod_TE.f90	/^SUBROUTINE ALLOCATER(/;"	s	module:mod_TE
+ALLOCATER	mod_low_DoS.f90	/^SUBROUTINE ALLOCATER(/;"	s	module:mod_DoS_low
+C6_i	mm_dispersion.f90	/^  REAL ( DP ) , ALLOCATABLE , PRIVATE :: C6_i /;"	v	module:london_module
+C6_ij	mm_dispersion.f90	/^                                         R_vdw ( : ) ,     &$/;"	v	module:london_module
+Cuad_Simps	Simpson.f90	/^subroutine Cuad_Simps(/;"	s	module:Simpson
+DoS	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: DoS,/;"	v	module:mod_DoS_2PT
+DoS	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: DoS,/;"	v	module:mod_DoS_low
+DoS_gas	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: DoS_gas,/;"	v	module:mod_DoS_2PT
+DoS_gas	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: DoS_gas,/;"	v	module:mod_DoS_low
+Dos_S_Debye	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: DoS_gas,Dos_S_Debye$/;"	v	module:mod_DoS_2PT
+Dos_S_Debye	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: DoS_gas,Dos_S_Debye$/;"	v	module:mod_DoS_low
+EPSIL	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RX,RY,RZ,&$/;"	v	module:mod_TE
+Fx_t	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Fx_t /;"	v	module:mod_DoS_2PT
+Fx_t	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Fx_t /;"	v	module:mod_DoS_low
+Fy_t	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Fy_t /;"	v	module:mod_DoS_2PT
+Fy_t	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Fy_t /;"	v	module:mod_DoS_low
+Fz_t	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Fz_t /;"	v	module:mod_DoS_2PT
+Fz_t	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Fz_t /;"	v	module:mod_DoS_low
+GET	get_command.f90	/^PROGRAM GET$/;"	p
+ITYPE	mod_TE.f90	/^INTEGER,DIMENSION(:),ALLOCATABLE :: Z,MOL,& $/;"	v	module:mod_TE
+MOL	mod_TE.f90	/^INTEGER,DIMENSION(:),ALLOCATABLE :: Z,MOL,/;"	v	module:mod_TE
+NATOM	mod_TE.f90	/^INTEGER ::  NATOM,/;"	v	module:mod_TE
+NCAP	mod_TE.f90	/^            NMOL,&   !Index de Molecula de Seguir$/;"	v	module:mod_TE
+NMET	mod_TE.f90	/^INTEGER ::  NATOM,&  !Atomos totales$/;"	v	module:mod_TE
+NMOL	mod_TE.f90	/^            NaxMOL,& !Atomos por Molecula$/;"	v	module:mod_TE
+N_fftw	mod_DoS_2PT.f90	/^integer :: N_fftw /;"	v	module:mod_DoS_2PT
+N_fftw	mod_low_DoS.f90	/^integer :: N_fftw /;"	v	module:mod_DoS_low
+N_fftwi	mod_DoS_2PT.f90	/^integer :: N_fftwi$/;"	v	module:mod_DoS_2PT
+N_fftwi	mod_low_DoS.f90	/^integer :: N_fftwi$/;"	v	module:mod_DoS_low
+Natom	mod_DoS_2PT.f90	/^integer :: Natom$/;"	v	module:mod_DoS_2PT
+Natom	mod_low_DoS.f90	/^integer :: Natom /;"	v	module:mod_DoS_low
+NaxMOL	mod_TE.f90	/^            NMET,& !Atomos metalicos$/;"	v	module:mod_TE
+OE	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: OE /;"	v	module:mod_DoS_2PT
+RX	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RX,/;"	v	module:mod_TE
+RXCAP	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXCAP,/;"	v	module:mod_TE
+RXMET	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMET,/;"	v	module:mod_TE
+RXMOL	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMOL,/;"	v	module:mod_TE
+RY	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RX,RY,/;"	v	module:mod_TE
+RYCAP	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXCAP,RYCAP,/;"	v	module:mod_TE
+RYMET	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMET,RYMET,/;"	v	module:mod_TE
+RYMOL	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMOL,RYMOL,/;"	v	module:mod_TE
+RZ	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RX,RY,RZ,/;"	v	module:mod_TE
+RZCAP	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXCAP,RYCAP,RZCAP /;"	v	module:mod_TE
+RZMET	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMET,RYMET,RZMET /;"	v	module:mod_TE
+RZMOL	mod_TE.f90	/^REAL(dp),DIMENSION(:),ALLOCATABLE :: RXMOL,RYMOL,RZMOL /;"	v	module:mod_TE
+R_sum	mm_dispersion.f90	/^                                         C6_ij ( : , : ) , &$/;"	v	module:london_module
+R_vdw	mm_dispersion.f90	/^  REAL ( DP ) , ALLOCATABLE , PRIVATE :: C6_i  ( : ) ,     &$/;"	v	module:london_module
+Rxx	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Rxx /;"	v	module:mod_DoS_2PT
+Rxx	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Rxx /;"	v	module:mod_DoS_low
+Rxyz	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Rxyz /;"	v	module:mod_DoS_2PT
+Rxyz	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Rxyz /;"	v	module:mod_DoS_low
+Ryy	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Ryy /;"	v	module:mod_DoS_2PT
+Ryy	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Ryy /;"	v	module:mod_DoS_low
+Rzz	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: Rzz /;"	v	module:mod_DoS_2PT
+Rzz	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: Rzz /;"	v	module:mod_DoS_low
+S2PT	mod_DoS_2PT.f90	/^ real(dp)  :: S2PT /;"	v	module:mod_DoS_2PT
+S2PT	mod_low_DoS.f90	/^ real(dp)  :: S2PT /;"	v	module:mod_DoS_low
+SDoS	mod_DoS_2PT.f90	/^ real(dp)  :: SDoS /;"	v	module:mod_DoS_2PT
+SDoS	mod_low_DoS.f90	/^ real(dp)  :: SDoS /;"	v	module:mod_DoS_low
+SIGMA	mod_TE.f90	/^                                     EPSIL,SIGMA$/;"	v	module:mod_TE
+SWGA	mod_DoS_2PT.f90	/^ real(dp)  :: SWGA /;"	v	module:mod_DoS_2PT
+SWGA	mod_low_DoS.f90	/^ real(dp)  :: SWGA /;"	v	module:mod_DoS_low
+SWGS	mod_DoS_2PT.f90	/^ real(dp)  :: SWGS /;"	v	module:mod_DoS_2PT
+SWGS	mod_low_DoS.f90	/^ real(dp)  :: SWGS /;"	v	module:mod_DoS_low
+SWSA	mod_DoS_2PT.f90	/^ real(dp)  :: SWSA /;"	v	module:mod_DoS_2PT
+SWSA	mod_low_DoS.f90	/^ real(dp)  :: SWSA /;"	v	module:mod_DoS_low
+SWSS	mod_DoS_2PT.f90	/^ real(dp)  :: SWSS /;"	v	module:mod_DoS_2PT
+SWSS	mod_low_DoS.f90	/^ real(dp)  :: SWSS /;"	v	module:mod_DoS_low
+Simpson	Simpson.f90	/^MODULE Simpson$/;"	m
+Wg_S	weighting_functions.f90	/^function Wg_S(/;"	f	module:weighting_functions
+Ws_A	weighting_functions.f90	/^function Ws_A(/;"	f	module:weighting_functions
+Ws_S	weighting_functions.f90	/^function Ws_S(/;"	f	module:weighting_functions
+Z	mod_TE.f90	/^INTEGER,DIMENSION(:),ALLOCATABLE :: Z,/;"	v	module:mod_TE
+a	mod_SMTB.f90	/^    real/;"	k	type:tb_parameter
+a	mod_SMTB.f90	/^real/;"	v	module:mod_SMTB
+ab	mod_SMTB.f90	/^real(dp) :: ab,/;"	v	module:mod_SMTB
+ar	mod_SMTB.f90	/^real(dp) :: ab,bb,cb,ar,/;"	v	module:mod_SMTB
+assert	input_parce.f90	/^SUBROUTINE assert(/;"	s
+atom_by_shell	mod_FEFF.f90	/^SUBROUTINE atom_by_shell(/;"	s	module:mod_FEFFinp
+auxdimm	mod_low_DoS.f90	/^integer :: dimm,auxdimm$/;"	v	module:mod_DoS_low
+b1	mod_SMTB.f90	/^                    r0    = 0.0_dp,&$/;"	k	type:tb_parameter
+b2	mod_SMTB.f90	/^                    b1    = 0.0_dp,&$/;"	k	type:tb_parameter
+b3	mod_SMTB.f90	/^                    b2    = 0.0_dp,&$/;"	k	type:tb_parameter
+banda	mod_SMTB.f90	/^real(dp)            :: banda,/;"	v	module:mod_SMTB
+bb	mod_SMTB.f90	/^real(dp) :: ab,bb,/;"	v	module:mod_SMTB
+beta	mm_dispersion.f90	/^  REAL ( DP ) , PRIVATE :: r_cut , beta /;"	v	module:london_module
+biseccion	biseccion.f90	/^ MODULE biseccion$/;"	m
+bond_order	mod_DoS_2PT.f90	/^subroutine bond_order(/;"	s	module:mod_DoS_2PT
+br	mod_SMTB.f90	/^real(dp) :: ab,bb,cb,ar,br,/;"	v	module:mod_SMTB
+bra	input_parce.f90	/^CHARACTER, PARAMETER :: space = " ", bra /;"	v	module:input_parce
+cb	mod_SMTB.f90	/^real(dp) :: ab,bb,cb,/;"	v	module:mod_SMTB
+char	input_parce.f90	/^CHARACTER(LEN=800), SAVE :: char=/;"	v	module:input_parce
+clear	input_parce.f90	/^LOGICAL, SAVE :: skipbl=.false., clear=/;"	v	module:input_parce
+close_file	mod_get_comand.f90	/^ SUBROUTINE close_file(/;"	s
+cm	mod_RDF.f90	/^SUBROUTINE cm(/;"	s	module:mod_RDF
+cm	mod_TE.f90	/^SUBROUTINE cm(/;"	s	module:mod_TE
+comma	input_parce.f90	/^CHARACTER, PARAMETER :: space = " ", bra = "(", ket = ")",             &$/;"	v	module:input_parce
+concat	input_parce.f90	/^CHARACTER(LEN=8), SAVE :: concat /;"	v	module:input_parce
+contar_cifras	Strings.f90	/^  function contar_cifras(/;"	f	module:strings
+count_lines	mod_count_lines.f90	/^SUBROUTINE count_lines(/;"	s	module:mod_count_line
+cr	mod_SMTB.f90	/^real(dp) :: ab,bb,cb,ar,br,cr$/;"	v	module:mod_SMTB
+dealloca_london	mm_dispersion.f90	/^   SUBROUTINE dealloca_london$/;"	s	module:london_module
+debug	input_parce.f90	/^LOGICAL, SAVE :: skipbl=.false., clear=.true., echo=.false.,   &$/;"	v	module:input_parce
+die	input_parce.f90	/^SUBROUTINE die(/;"	s
+dimm	mod_low_DoS.f90	/^integer :: dimm,/;"	v	module:mod_DoS_low
+dist2	mm_dispersion.f90	/^                                         r     ( : , : ) , &$/;"	v	module:london_module
+dist_OE	mod_BORDER.f90	/^SUBROUTINE dist_OE(/;"	s	module:mod_BORDER
+dist_p	mod_PDF.f90	/^SUBROUTINE dist_p(/;"	s	module:mod_PDF
+dist_r	mod_RDF.f90	/^SUBROUTINE dist_r(/;"	s	module:mod_RDF
+dist_r	mod_TE.f90	/^SUBROUTINE dist_r(/;"	s	module:mod_TE
+doBORDER	mod_BORDER.f90	/^SUBROUTINE doBORDER(/;"	s	module:mod_BORDER
+doClean	mod_Clean.f90	/^SUBROUTINE doClean(/;"	s	module:mod_Clean
+doDoS	mod_DoS_2PT.f90	/^SUBROUTINE doDoS(/;"	s	module:mod_DoS_2PT
+doDoSlow	mod_low_DoS.f90	/^SUBROUTINE doDoSlow(/;"	s	module:mod_DoS_low
+doFEFFinp	mod_FEFF.f90	/^SUBROUTINE doFEFFinp(/;"	s	module:mod_FEFFinp
+doFFT	mod_FFT.f90	/^SUBROUTINE doFFT(/;"	s	module:mod_FFT
+doPDF	mod_PDF.f90	/^SUBROUTINE doPDF(/;"	s	module:mod_PDF
+doRDF	mod_RDF.f90	/^SUBROUTINE doRDF(/;"	s	module:mod_RDF
+doSMTB	mod_SMTB.f90	/^SUBROUTINE doSMTB(/;"	s	module:mod_SMTB
+doTE	mod_TE.f90	/^SUBROUTINE doTE(/;"	s	module:mod_TE
+dos_core	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: dos_core,/;"	v	module:mod_DoS_2PT
+dos_shell	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: dos_core,dos_shell /;"	v	module:mod_DoS_2PT
+dos_x	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,/;"	v	module:mod_DoS_2PT
+dos_x	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,/;"	v	module:mod_DoS_low
+dos_y	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,dos_y,/;"	v	module:mod_DoS_2PT
+dos_y	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,dos_y,/;"	v	module:mod_DoS_low
+dos_z	mod_DoS_2PT.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,dos_y,dos_z /;"	v	module:mod_DoS_2PT
+dos_z	mod_low_DoS.f90	/^ complex(dp),dimension(:),allocatable :: DoS,dos_x,dos_y,dos_z /;"	v	module:mod_DoS_low
+dot	input_parce.f90	/^    plus="+", minus="-", dot=/;"	v	module:input_parce
+dp	input_parce.f90	/^INTEGER, PARAMETER :: dp=/;"	v	module:input_parce
+dp	mod_Clean.f90	/^integer,parameter,private :: dp=/;"	v	module:mod_Clean
+dp	mod_DoS_2PT.f90	/^integer,parameter :: dp=/;"	v	module:mod_DoS_2PT
+dp	mod_FFT.f90	/^integer,parameter :: dp=/;"	v	module:mod_FFT
+dp	mod_RDF.f90	/^integer,parameter,private :: dp=/;"	v	module:mod_RDF
+dp	mod_SMTB.f90	/^integer,parameter,private :: dp=/;"	v	module:mod_SMTB
+dp	mod_TE.f90	/^integer,parameter,private :: dp=/;"	v	module:mod_TE
+dp	mod_low_DoS.f90	/^integer,parameter :: dp=/;"	v	module:mod_DoS_low
+dquote	input_parce.f90	/^    comma = ",", squote = "'", dquote /;"	v	module:input_parce
+dr	mod_SMTB.f90	/^real(dp) :: r,dr$/;"	v	module:mod_SMTB
+drm	mod_SMTB.f90	/^real(dp) :: drm,/;"	v	module:mod_SMTB
+drm2	mod_SMTB.f90	/^real(dp) :: drm,drm2,/;"	v	module:mod_SMTB
+drm3	mod_SMTB.f90	/^real(dp) :: drm,drm2,drm3,/;"	v	module:mod_SMTB
+drm4	mod_SMTB.f90	/^real(dp) :: drm,drm2,drm3,drm4,/;"	v	module:mod_SMTB
+drm5	mod_SMTB.f90	/^real(dp) :: drm,drm2,drm3,drm4,drm5$/;"	v	module:mod_SMTB
+echo	input_parce.f90	/^LOGICAL, SAVE :: skipbl=.false., clear=.true., echo=/;"	v	module:input_parce
+end	input_parce.f90	/^INTEGER, SAVE :: item=0, nitems=0, loc(0:80)=0, end(/;"	v	module:input_parce
+energy_london	mm_dispersion.f90	/^   FUNCTION energy_london /;"	f	module:london_module
+eps	mod_SMTB.f90	/^    real(dp)    ::  a     = 0.0_dp,&$/;"	k	type:tb_parameter
+eps	mod_SMTB.f90	/^real(dp) :: a,eps,/;"	v	module:mod_SMTB
+file	input_parce.f90	/^CHARACTER(LEN=40) :: file(/;"	v	module:input_parce
+files	mod_get_comand.f90	/^CHARACTER(len=60),dimension(5)    :: files,/;"	v	module:mod_get_comand
+find_io	input_parce.f90	/^INTEGER FUNCTION find_io(/;"	f
+find_io	mod_drive_files.f90	/^integer function find_io(/;"	f	module:mod_drive_files
+float2char	Strings.f90	/^  function float2char(/;"	f	module:strings
+fmax	mod_low_DoS.f90	/^integer,parameter :: fmax=/;"	v	module:mod_DoS_low
+force_london	mm_dispersion.f90	/^   FUNCTION force_london /;"	f	module:london_module
+fraccion_gas	biseccion.f90	/^ subroutine fraccion_gas(/;"	s	module:biseccion
+fun	biseccion.f90	/^func/;"	f	module:biseccion
+fun_CDN	weighting_functions.f90	/^function fun_CDN(/;"	f	module:weighting_functions
+fun_OE	mod_BORDER.f90	/^SUBROUTINE fun_OE(/;"	s	module:mod_BORDER
+fun_ZCS	weighting_functions.f90	/^ function fun_ZCS(/;"	f	module:weighting_functions
+fx	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: fx,/;"	v	module:mod_DoS_2PT
+fx	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: fx,/;"	v	module:mod_DoS_low
+fy	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: fx,fy,/;"	v	module:mod_DoS_2PT
+fy	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: fx,fy,/;"	v	module:mod_DoS_low
+fz	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: fx,fy,fz /;"	v	module:mod_DoS_2PT
+fz	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: fx,fy,fz /;"	v	module:mod_DoS_low
+g_ADoS	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: g_ADoS /;"	v	module:mod_DoS_2PT
+g_ADoS	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: g_ADoS /;"	v	module:mod_DoS_low
+g_SDoS	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: g_SDoS /;"	v	module:mod_DoS_2PT
+g_SDoS	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: g_SDoS /;"	v	module:mod_DoS_low
+g_SWGA	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: g_SWGA /;"	v	module:mod_DoS_2PT
+g_SWGA	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: g_SWGA /;"	v	module:mod_DoS_low
+g_SWGS	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: g_SWGS /;"	v	module:mod_DoS_2PT
+g_SWGS	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: g_SWGS /;"	v	module:mod_DoS_low
+g_SWSA	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: g_SWSA /;"	v	module:mod_DoS_2PT
+g_SWSA	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: g_SWSA /;"	v	module:mod_DoS_low
+g_SWSS	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable:: g_SWSS /;"	v	module:mod_DoS_2PT
+g_SWSS	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable:: g_SWSS /;"	v	module:mod_DoS_low
+geta	input_parce.f90	/^SUBROUTINE geta(/;"	s
+getargs	input_parce.f90	/^SUBROUTINE getargs$/;"	s
+getf	input_parce.f90	/^SUBROUTINE getf(/;"	s
+geti	input_parce.f90	/^SUBROUTINE geti(/;"	s
+ii	get_command.f90	/^INTEGER :: jj,ii$/;"	v	program:GET
+in_C6	mm_dispersion.f90	/^  REAL ( DP ) , PUBLIC :: scal6=0._dp , lon_rcut=0._dp , in_C6 /;"	v	module:london_module
+init_london	mm_dispersion.f90	/^   SUBROUTINE init_london /;"	s	module:london_module
+input_options	input_parce.f90	/^SUBROUTINE input_options(/;"	s
+input_parce	input_parce.f90	/^MODULE input_parce$/;"	m
+inq_z	Strings.f90	/^  function inq_z(/;"	f	module:strings
+int2char	Strings.f90	/^  function int2char(/;"	f	module:strings
+int2char0	Strings.f90	/^  function int2char0(/;"	f	module:strings
+ir	input_parce.f90	/^    line(0:10)=0, level=0, nerror=0, ir=/;"	v	module:input_parce
+item	input_parce.f90	/^INTEGER, SAVE :: item=/;"	v	module:input_parce
+jj	get_command.f90	/^INTEGER :: jj,/;"	v	program:GET
+jump_lines	mod_PDF.f90	/^SUBROUTINE jump_lines(/;"	s
+jump_lines	mod_RDF.f90	/^SUBROUTINE jump_lines(/;"	s	module:mod_RDF
+jump_lines	mod_TE.f90	/^SUBROUTINE jump_lines(/;"	s	module:mod_TE
+ket	input_parce.f90	/^CHARACTER, PARAMETER :: space = " ", bra = "(", ket /;"	v	module:input_parce
+last	input_parce.f90	/^    line(0:10)=0, level=0, nerror=0, ir=5, last=/;"	v	module:input_parce
+lc	input_parce.f90	/^INTEGER, SAVE :: lc=/;"	v	module:input_parce
+level	input_parce.f90	/^    line(0:10)=0, level=/;"	v	module:input_parce
+line	input_parce.f90	/^INTEGER, SAVE :: item=0, nitems=0, loc(0:80)=0, end(80)=0,     &$/;"	v	module:input_parce
+lmaxx	mm_dispersion.f90	/^       npk    = 40000,  &! max number of k-points               $/;"	v	module:parameters
+loc	input_parce.f90	/^INTEGER, SAVE :: item=0, nitems=0, loc(/;"	v	module:input_parce
+locase	Strings.f90	/^  subroutine locase(/;"	s	module:strings
+locase	input_parce.f90	/^SUBROUTINE locase(/;"	s
+lon_rcut	mm_dispersion.f90	/^  REAL ( DP ) , PUBLIC :: scal6=0._dp , lon_rcut=/;"	v	module:london_module
+london_module	mm_dispersion.f90	/^MODULE london_module$/;"	m
+lower_case	Strings.f90	/^    upper_case="ABCDEFGHIJKLMNOPQRSTUVWXYZ",                           &$/;"	v	module:strings
+lower_case	input_parce.f90	/^    upper_case="ABCDEFGHIJKLMNOPQRSTUVWXYZ",                           &$/;"	v	module:input_parce
+lqmax	mm_dispersion.f90	/^  INTEGER, PARAMETER :: &$/;"	v	module:parameters
+make_comand	mod_get_comand.f90	/^SUBROUTINE make_comand(/;"	s	module:mod_get_comand
+makes	mod_get_comand.f90	/^CHARACTER(len=25),dimension(5,10) :: makes$/;"	v	module:mod_get_comand
+mas_v	mod_DoS_2PT.f90	/^ real(dp),dimension(:),allocatable :: mas_v /;"	v	module:mod_DoS_2PT
+mas_v	mod_low_DoS.f90	/^ real(dp),dimension(:),allocatable :: mas_v /;"	v	module:mod_DoS_low
+max_nconstr	mm_dispersion.f90	/^  INTEGER, PARAMETER :: max_nconstr /;"	v	module:parameters
+minus	input_parce.f90	/^    plus="+", minus=/;"	v	module:input_parce
+mod_BORDER	mod_BORDER.f90	/^MODULE mod_BORDER$/;"	m
+mod_Clean	mod_Clean.f90	/^MODULE mod_Clean$/;"	m
+mod_DoS_2PT	mod_DoS_2PT.f90	/^MODULE mod_DoS_2PT$/;"	m
+mod_DoS_low	mod_low_DoS.f90	/^MODULE mod_DoS_low$/;"	m
+mod_FEFFinp	mod_FEFF.f90	/^MODULE mod_FEFFinp$/;"	m
+mod_FFT	mod_FFT.f90	/^MODULE mod_FFT$/;"	m
+mod_PDF	mod_PDF.f90	/^MODULE mod_PDF$/;"	m
+mod_RDF	mod_RDF.f90	/^MODULE mod_RDF$/;"	m
+mod_SMTB	mod_SMTB.f90	/^MODULE mod_SMTB$/;"	m
+mod_TE	mod_TE.f90	/^MODULE mod_TE$/;"	m
+mod_count_line	mod_count_lines.f90	/^MODULE mod_count_line$/;"	m
+mod_drive_files	mod_drive_files.f90	/^MODULE mod_drive_files$/;"	m
+mod_get_comand	mod_get_comand.f90	/^MODULE mod_get_comand$/;"	m
+mod_ran2	mod_ran2.f90	/^MODULE mod_ran2$/;"	m
+more	input_parce.f90	/^  debug=.false., more$/;"	v	module:input_parce
+mxr	mm_dispersion.f90	/^  INTEGER , PRIVATE :: mxr$/;"	v	module:london_module
+nacx	mm_dispersion.f90	/^  INTEGER, PARAMETER :: nacx /;"	v	module:parameters
+name_files	mod_get_comand.f90	/^CHARACTER(len=60),dimension(5)    :: files,name_files$/;"	v	module:mod_get_comand
+nbas	mod_count_lines.f90	/^integer :: nline,nbas$/;"	v	module:mod_count_line
+nerror	input_parce.f90	/^    line(0:10)=0, level=0, nerror=/;"	v	module:input_parce
+nhclm	mm_dispersion.f90	/^  INTEGER, PARAMETER :: nhclm /;"	v	module:parameters
+nitems	input_parce.f90	/^INTEGER, SAVE :: item=0, nitems=/;"	v	module:input_parce
+nline	mod_count_lines.f90	/^integer :: nline,/;"	v	module:mod_count_line
+npk	mm_dispersion.f90	/^       npsx   = ntypx,  &! max number of different PPs (obsolete)$/;"	v	module:parameters
+npkx	mm_dispersion.f90	/^  INTEGER, PARAMETER :: npkx /;"	v	module:parameters
+npsx	mm_dispersion.f90	/^       ntypx  = 10,     &! max number of different types of atom$/;"	v	module:parameters
+nspinx	mm_dispersion.f90	/^  INTEGER, PARAMETER :: nspinx /;"	v	module:parameters
+nsx	mm_dispersion.f90	/^  INTEGER, PARAMETER :: nsx /;"	v	module:parameters
+ntypx	mm_dispersion.f90	/^  INTEGER, PARAMETER :: &$/;"	v	module:parameters
+oneos2	mod_SMTB.f90	/^real(dp),parameter :: oneos2=/;"	v	module:mod_SMTB
+open_directory	mod_get_comand.f90	/^SUBROUTINE open_directory(/;"	s	module:mod_get_comand
+open_file	mod_get_comand.f90	/^SUBROUTINE open_file(/;"	s	module:mod_get_comand
+p	mod_SMTB.f90	/^                    eps/;"	k	type:tb_parameter
+p	mod_SMTB.f90	/^real(dp)/;"	v	module:mod_SMTB
+parameters	mm_dispersion.f90	/^MODULE parameters$/;"	m
+parse	input_parce.f90	/^SUBROUTINE parse(/;"	s	module:input_parce
+plus	input_parce.f90	/^    comma = ",", squote = "'", dquote = '"', tab=achar(9),             &$/;"	v	module:input_parce
+prom_over_i	mod_PDF.f90	/^SUBROUTINE prom_over_i(/;"	s	module:mod_PDF
+q	mod_SMTB.f90	/^                    p     = 0.0_dp,&$/;"	k	type:tb_parameter
+q	mod_SMTB.f90	/^real(dp) :: a,eps,p,q,/;"	v	module:mod_SMTB
+r	mm_dispersion.f90	/^                                         R_sum ( : , : ) , &$/;"	v	module:london_module
+r	mod_SMTB.f90	/^re/;"	v	module:mod_SMTB
+r0	mod_SMTB.f90	/^                    q     = 0.0_dp,&$/;"	k	type:tb_parameter
+r0	mod_SMTB.f90	/^real(dp) :: a,eps,p,q,r0,/;"	v	module:mod_SMTB
+r1	mod_SMTB.f90	/^                    b3    = 0.0_dp,&$/;"	k	type:tb_parameter
+r2	mod_SMTB.f90	/^                    r1    = 0.0_dp,&$/;"	k	type:tb_parameter
+r3	mod_SMTB.f90	/^                    r2    = 0.0_dp,&$/;"	k	type:tb_parameter
+r_cut	mm_dispersion.f90	/^  REAL ( DP ) , PRIVATE :: r_cut /;"	v	module:london_module
+ran2	mod_ran2.f90	/^      FUNCTION ran2(/;"	f	module:mod_ran2
+rce	mod_SMTB.f90	/^                    rci   = 0.0_dp,&$/;"	k	type:tb_parameter
+rci	mod_SMTB.f90	/^                    r3    = 0.0_dp,&$/;"	k	type:tb_parameter
+rcut_ext	mod_SMTB.f90	/^real(dp) :: a,eps,p,q,r0,rcut_int,rcut_ext$/;"	v	module:mod_SMTB
+rcut_int	mod_SMTB.f90	/^real(dp) :: a,eps,p,q,r0,rcut_int,/;"	v	module:mod_SMTB
+read_colour	input_parce.f90	/^SUBROUTINE read_colour(/;"	s
+read_comand	mod_get_comand.f90	/^SUBROUTINE read_comand(/;"	s	module:mod_get_comand
+read_double	input_parce.f90	/^SUBROUTINE read_double(/;"	s
+read_line	input_parce.f90	/^SUBROUTINE read_line(/;"	s	module:input_parce
+read_single	input_parce.f90	/^SUBROUTINE read_single(/;"	s
+reada	input_parce.f90	/^SUBROUTINE reada(/;"	s
+readi	input_parce.f90	/^SUBROUTINE readi(/;"	s
+readl	input_parce.f90	/^SUBROUTINE readl(/;"	s
+readu	input_parce.f90	/^SUBROUTINE readu(/;"	s
+report	input_parce.f90	/^SUBROUTINE report(/;"	s
+repul	mod_SMTB.f90	/^real(dp)            :: banda,repul$/;"	v	module:mod_SMTB
+reread	input_parce.f90	/^SUBROUTINE reread(/;"	s
+scal6	mm_dispersion.f90	/^  REAL ( DP ) , PUBLIC :: scal6=/;"	v	module:london_module
+skipbl	input_parce.f90	/^LOGICAL, SAVE :: skipbl=/;"	v	module:input_parce
+space	input_parce.f90	/^CHARACTER, PARAMETER :: space /;"	v	module:input_parce
+spot_x	mod_DoS_2PT.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,/;"	v	module:mod_DoS_2PT
+spot_x	mod_low_DoS.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,/;"	v	module:mod_DoS_low
+spot_y	mod_DoS_2PT.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,spot_y,/;"	v	module:mod_DoS_2PT
+spot_y	mod_low_DoS.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,spot_y,/;"	v	module:mod_DoS_low
+spot_z	mod_DoS_2PT.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,spot_y,spot_z /;"	v	module:mod_DoS_2PT
+spot_z	mod_low_DoS.f90	/^ complex(dp),dimension(:,:),allocatable :: spot_x,spot_y,spot_z /;"	v	module:mod_DoS_low
+squote	input_parce.f90	/^    comma = ",", squote /;"	v	module:input_parce
+stream	input_parce.f90	/^SUBROUTINE stream(/;"	s
+stres_london	mm_dispersion.f90	/^   FUNCTION stres_london /;"	f	module:london_module
+strings	Strings.f90	/^module strings$/;"	m
+tab	input_parce.f90	/^    comma = ",", squote = "'", dquote = '"', tab=/;"	v	module:input_parce
+tb_parameter	mod_SMTB.f90	/^type :: tb_parameter$/;"	t	module:mod_SMTB
+tbp	mod_SMTB.f90	/^type(tb_parameter)   :: tbp(/;"	v	module:mod_SMTB
+troz	mod_low_DoS.f90	/^integer,parameter :: troz=/;"	v	module:mod_DoS_low
+unit	input_parce.f90	/^    line(0:10)=0, level=0, nerror=0, ir=5, last=0, unit(/;"	v	module:input_parce
+upcase	Strings.f90	/^  subroutine upcase(/;"	s	module:strings
+upcase	input_parce.f90	/^SUBROUTINE upcase(/;"	s
+upper_case	Strings.f90	/^  character(len=26), parameter ::                                        &$/;"	v	module:strings
+upper_case	input_parce.f90	/^CHARACTER(LEN=26), PARAMETER ::                                        &$/;"	v	module:input_parce
+vx	mod_DoS_2PT.f90	/^ real(dp),dimension(:,:),allocatable :: vx,/;"	v	module:mod_DoS_2PT
+vx	mod_low_DoS.f90	/^ real(dp),dimension(:,:),allocatable :: vx,/;"	v	module:mod_DoS_low
+vy	mod_DoS_2PT.f90	/^ real(dp),dimension(:,:),allocatable :: vx,vy,/;"	v	module:mod_DoS_2PT
+vy	mod_low_DoS.f90	/^ real(dp),dimension(:,:),allocatable :: vx,vy,/;"	v	module:mod_DoS_low
+vz	mod_DoS_2PT.f90	/^ real(dp),dimension(:,:),allocatable :: vx,vy,vz /;"	v	module:mod_DoS_2PT
+vz	mod_low_DoS.f90	/^ real(dp),dimension(:,:),allocatable :: vx,vy,vz /;"	v	module:mod_DoS_low
+weighting_functions	weighting_functions.f90	/^MODULE weighting_functions /;"	m
+write_coments	mod_get_comand.f90	/^SUBROUTINE write_coments(/;"	s
+write_feffinp	mod_FEFF.f90	/^ SUBROUTINE write_feffinp(/;"	s
+write_lista	mod_get_comand.f90	/^ SUBROUTINE write_lista(/;"	s
+z1	mod_SMTB.f90	/^integer             :: z1,/;"	v	module:mod_SMTB
+z2	mod_SMTB.f90	/^integer             :: z1,z2$/;"	v	module:mod_SMTB
+zmax	mod_SMTB.f90	/^integer,parameter   :: zmax=/;"	v	module:mod_SMTB

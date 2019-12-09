@@ -1,0 +1,186 @@
+!Este Módulo 
+MODULE mod_SMTB
+USE mod_count_line
+integer,parameter,private :: dp=kind(0.0d0)
+
+integer,parameter   :: zmax=128
+integer             :: z1,z2
+real(dp)            :: banda,repul
+real(dp) :: a,eps,p,q,r0,rcut_int,rcut_ext
+real(dp) :: drm,drm2,drm3,drm4,drm5
+real(dp) :: ab,bb,cb,ar,br,cr
+real(dp) :: r,dr
+!........Constantes.....
+real(dp),parameter :: oneos2=0.707106781186547d0
+!.......................
+
+type :: tb_parameter
+    real(dp)    ::  a     = 0.0_dp,&
+                    eps   = 0.0_dp,&
+                    p     = 0.0_dp,&
+                    q     = 0.0_dp,&
+                    r0    = 0.0_dp,&
+                    b1    = 0.0_dp,&
+                    b2    = 0.0_dp,&
+                    b3    = 0.0_dp,&
+                    r1    = 0.0_dp,&
+                    r2    = 0.0_dp,&
+                    r3    = 0.0_dp,&
+                    rci   = 0.0_dp,&
+                    rce   = 0.0_dp
+ end type tb_parameter
+
+type(tb_parameter)   :: tbp(zmax,zmax) 
+
+CONTAINS
+!*******
+SUBROUTINE doSMTB(unit_file,name_files)
+implicit none
+integer,intent(in) :: unit_file
+CHARACTER(len=*),dimension(5),intent(in) :: name_files !entra con la longitud que le quedó luego del trim 
+real(dp),dimension(:),allocatable :: rr
+real(dp) :: rx,ry,rz    !Posiciones de los atomos (auxiliar)
+real(dp),dimension(:),allocatable :: rxAu,ryAu,rzAu
+integer :: ntot=0             !numero de atomos totales
+integer :: natom=0
+integer :: natom_Au=0
+integer :: nerror=0
+integer :: ierror
+!......................Contadores
+integer :: i,j,k,ii,jj  
+character(len=2) :: Mm  !Identidad de los elementos
+!....................................................
+ CALL count_lines()
+!....................................................
+READ(123,*) ntot !Numero de atomos totales por config
+READ(123,*)     
+ DO 
+  READ(123,*,IOSTAT = ierror) Mm,rx,ry,rz
+  IF(ierror == 0)then !No hay error en la lectura 
+    IF(trim(adjustl(Mm))=="Au") natom_Au  = natom_Au   + 1  
+  ENDIF 
+  IF(ierror > 0)then; nerror=nerror + 1 ; ENDIF      !Cuenta posibles errores de lectura.
+  IF(ierror < 0)EXIT                                 !Encuentra el final del archivo.
+ ENDDO 
+REWIND(123)
+!........................... ALLOCATEO
+ALLOCATE(rxAu(natom_Au),ryAu(natom_Au),rzAu(natom_Au)) 
+!......................................................
+natom_Au=0
+DO 
+ READ(123,*,IOSTAT = ierror) Mm ,rx,ry,rz
+ IF(ierror == 0)then !No hay error en la lectura 
+  IF(trim(adjustl(Mm))=="Au")then ; natom_Au = natom_Au  + 1 ; rxAu(natom_Au)=rx ;ryAu(natom_Au)=ry ;rzAu(natom_Au)=rz ;endif 
+ ENDIF 
+ IF(ierror > 0)then; nerror=nerror + 1 ; ENDIF      !Cuenta posibles errores de lectura.
+ IF(ierror < 0)EXIT                                 !Encuentra el final del archivo.
+ENDDO 
+REWIND(123)
+!............................... OUTPUT 
+OPEN(201,file=name_files(unit_file)//'.dat')
+!......................................................
+include 'tb_parameter.inc'
+!......................................................
+  do j = 1,zmax
+    do k = j,zmax
+
+      r0=tbp(j,k)%r0
+
+      if(r0==0.0_dp) cycle
+
+      p=tbp(j,k)%p
+      a=tbp(j,k)%a
+      eps=tbp(j,k)%eps
+      q=tbp(j,k)%q
+      rcut_int=tbp(j,k)%rci
+      rcut_ext=tbp(j,k)%rce
+     
+      ab=-eps*dexp(-q*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)**3
+      bb=-(q/r0)*eps*dexp(-q*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)**2
+      cb=-((q/r0)**2)*eps*dexp(-q*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)
+      
+      tbp(j,k)%b1=(12.0_dp*ab-6.0_dp*bb+cb)/(2.0_dp*(rcut_ext-rcut_int)**2)
+      tbp(j,k)%b2=(15.0_dp*ab-7.0_dp*bb+cb)/(rcut_ext-rcut_int)
+      tbp(j,k)%b3=(20.0_dp*ab-8.0_dp*bb+cb)/2.0_dp
+      
+
+      ar=-a*dexp(-p*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)**3 
+      br=-(p/r0)*a*dexp(-p*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)**2
+      cr=-((p/r0)**2)*a*dexp(-p*(rcut_int/r0-1.0_dp))/(rcut_ext-rcut_int)
+      
+      tbp(j,k)%r1=(12.0_dp*ar-6.0_dp*br+cr)/(2.0_dp*(rcut_ext-rcut_int)**2)
+      tbp(j,k)%r2=(15.0_dp*ar-7.0_dp*br+cr)/(rcut_ext-rcut_int)
+      tbp(j,k)%r3=(20.0_dp*ar-8.0_dp*br+cr)/2.0_dp
+    enddo
+  enddo   
+do j = 1,zmax
+    do k = j+1,zmax
+
+      tbp(k,j)%a   = tbp(j,k)%a  
+      tbp(k,j)%eps = tbp(j,k)%eps
+      tbp(k,j)%p   = tbp(j,k)%p  
+      tbp(k,j)%q   = tbp(j,k)%q  
+      tbp(k,j)%r0  = tbp(j,k)%r0 
+      tbp(k,j)%b1  = tbp(j,k)%b1 
+      tbp(k,j)%b2  = tbp(j,k)%b2 
+      tbp(k,j)%b3  = tbp(j,k)%b3 
+      tbp(k,j)%r1  = tbp(j,k)%r1 
+      tbp(k,j)%r2  = tbp(j,k)%r2 
+      tbp(k,j)%r3  = tbp(j,k)%r3 
+
+    enddo
+  enddo
+
+  r=3.84d0
+  dr=0.0050d0
+
+  z1=46
+  z2=46
+  
+      p=tbp(z1,z2)%p
+      a=tbp(z1,z2)%a
+      eps=tbp(z1,z2)%eps
+      q=tbp(z1,z2)%q
+      rcut_int=tbp(z1,z2)%rci
+      rcut_ext=tbp(z1,z2)%rce
+
+  do while(r<=5.3d0)
+
+        if(r<=rcut_int)then
+        
+          banda=tbp(z1,z2)%eps*tbp(z1,z2)%eps*dexp(-2.0_dp*tbp(z1,z2)%q*(r/r0-1.0_dp))
+   
+          repul=tbp(z1,z2)%a*dexp(-tbp(z1,z2)%p*(r/r0-1.0_dp))
+   
+         
+   
+        else if(r<=rcut_ext)then
+ 
+          drm=r-rcut_ext
+          drm2=drm *drm
+          drm3=drm2*drm
+          drm4=drm3*drm
+          drm5=drm4*drm
+        
+          banda=(tbp(z1,z2)%b1*drm5+tbp(z1,z2)%b2*drm4+tbp(z1,z2)%b3*drm3)**2
+        
+          repul=tbp(z1,z2)%r1*drm5+tbp(z1,z2)%r2*drm4+tbp(z1,z2)%r3*drm3
+        
+       end if
+
+         write(201,*) r,repul-banda
+  r=r+dr 
+enddo    
+
+
+!***************************************
+
+
+
+       ! drx=rxN(ii)-rxAu(jj) ; dry=ryN(ii)-ryAu(jj) ; drz=rzN(ii)-rzAu(jj)
+       ! dr2= drx*drx + dry*dry + drz*drz
+
+END SUBROUTINE doSMTB
+
+
+END MODULE mod_SMTB

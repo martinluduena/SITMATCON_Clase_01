@@ -1,0 +1,42 @@
+make:
+	ifort -o get\
+ -O0 -C -assume source_include -ip -debug inline-debug-info -traceback -check all\
+ mod_count_lines.f90 mod_ran2.f90\
+ mod_RDF.f90\
+ mod_Clean.f90\
+ mod_TE.f90\
+ mod_SMTB.f90\
+ biseccion.f90 Simpson.f90 weighting_functions.f90 mod_DoS_2PT.f90\
+ mod_low_DoS.f90\
+ mod_FFT.f90 -L/usr/local/lib -lfftw3 -lm\
+ mod_FEFF.f90\
+ mod_BORDER.f90\
+ mod_PDF.f90 mod_get_comand.f90 get_command.f90
+	
+	rm *mod
+
+#gfortran -O0 -fbacktrace  mod_count_lines.f90 mod_ran2.f90 mod_RDF.f90 mod_DoS.f90 mod_FFT.f90 -L/usr/local/lib -lfftw3 -lm   mod_FEFF.f90 mod_BORDER.f90 mod_PDF.f90  mod_get_comand.f90 get_command.f90 -o exxe.get
+# -fdump-parse-tree-fdump-fortran-original   -fdump-core-fdump-fortran-optimize   -pedantic 
+  
+#name of program : get
+
+
+#./get Coor-N309-run.xyz doRDF
+
+# Informacion sobre lo que estoy compilando
+# MAIN = get_command.f90 
+# MODULES : 1) mod_count_lines.f90
+#           2) mod_get_comand.f90
+#              2.1) mod_RDF.f90
+#              2.2) mod_FFT.f90 => linkea a la libreria lfftw3 que esta en el directorio -L/usr/local/lib
+#              2.3) mod_FEFF.f90 
+#                 2.3.1) mod_ran2.f90
+#              2.4) mod_BORDER.f90
+#              2.5) mod_PDF.f90 
+#              2.6) mod_DoS_2PT.f90  => linkea a la libreria lfftw3 que esta en el directorio -L/usr/local/lib
+#                 2.6.1) biseccion.f90
+#                 2.6.2) Simpson.f90
+#                 2.6.3) weigting_functions.f90
+#              2.7) mod_Clean.f90
+#              2.8) mod_SMTB.f90 (Subroutina para el calculo de energia de TB)
+

@@ -1,0 +1,134 @@
+#!/bin/bash
+# De esta manera de pueden COMPILAR los modulos de manera independiente de los demas.
+# Creamos los objetos, y por ultimos son compilados en el programa test_input.
+# Los objetos tienen informacion de como se linkean a los demas modulos o programa principal,
+# por lo que no es necesario compilarlos de manera ordenada. 
+
+        # COMPILADOR
+	FC=ifort
+	#FC=gfortran
+
+   ifeq ($(FC),ifort)        
+	 # FLAG Compiacion: make
+	 DEFS =-O0
+	 DEFS +=-C -assume source_include
+	 DEFS +=-ip -debug inline-debug-info
+	 DEFS +=-traceback -check all 
+	 # FLAG Compilacion: make debug
+	 DEFSdeb =-O0
+	 DEFSdeb +=-C -assume source_include
+	 DEFSdeb +=-ip -debug inline-debug-info
+	 DEFSdeb +=-traceback -check all 
+	 # FLAG Compilacion: make fast
+	 DEFSfst=-fast
+     endif
+       
+     ifeq ($(FC),gfortran)
+  	 DEFS =-O0
+	 #DEFS +=-fbacktrace
+	 #DEFS +=-fdump-parse-tree-fdump-fortran-original
+	 #DEFS +=-fdump-core-fdump-fortran-optimize
+	 DEFS +=-pedantic
+	 DEFS +=-ffree-line-length-none 
+     endif
+
+	# LIBRERIAS QUE UTILICE EL PROGRAMA
+	LIB=-L/usr/local/lib -lfftw3 -lm
+
+        # LISTA DE OBJETOS
+ 	MODULES = mod_count_lines.o
+	MODULES += mod_ran2.o
+	MODULES += mod_RDF.o
+	MODULES += mod_Clean.o
+	MODULES += mod_TE.o
+	MODULES += mod_SMTB.o
+	MODULES += biseccion.o
+	MODULES += Simpson.o
+	MODULES += weighting_functions.o
+	MODULES += mod_DoS_2PT.o
+	MODULES += mod_low_DoS.o
+	MODULES += mod_FFT.o
+	MODULES += mod_FEFF.o
+	MODULES += mod_BORDER.o
+	MODULES += mod_PDF.o
+	MODULES += mod_get_comand.o
+
+        # PROGRAMA PRINCIPAL
+	MAIN = get_command.o                   
+	
+
+make:
+	@${FC} -c ${DEFS}  mod_count_lines.f90
+	@${FC} -c ${DEFS}  mod_ran2.f90
+	@${FC} -c ${DEFS}  mod_RDF.f90                                                     
+	@${FC} -c ${DEFS}  mod_Clean.f90                                                   
+	@${FC} -c ${DEFS}  mod_TE.f90                                                      
+	@${FC} -c ${DEFS}  mod_SMTB.f90                                                    
+	@${FC} -c ${DEFS}  biseccion.f90
+	@${FC} -c ${DEFS}  Simpson.f90
+	@${FC} -c ${DEFS}  weighting_functions.f90
+	@${FC} -c ${DEFS}  mod_DoS_2PT.f90   
+	@${FC} -c ${DEFS}  mod_low_DoS.f90                                                  
+	@${FC} -c ${DEFS}  mod_FFT.f90                               
+	@${FC} -c ${DEFS}  mod_FEFF.f90                                                    
+	@${FC} -c ${DEFS}  mod_BORDER.f90                                                  
+	@${FC} -c ${DEFS}  mod_PDF.f90
+	@${FC} -c ${DEFS}  mod_get_comand.f90
+	@${FC} -c ${DEFS}  get_command.f90                   
+	
+	@echo "====================COMPILACION============"
+	
+	${FC} -o get ${MODULES} ${MAIN} ${LIB}
+	
+	@rm -f *.o
+	@rm -f *.mod
+debug:
+	@${FC} -c ${DEFSdeb}  mod_count_lines.f90
+	@${FC} -c ${DEFSdeb}  mod_ran2.f90
+	@${FC} -c ${DEFSdeb}  mod_RDF.f90                                                     
+	@${FC} -c ${DEFSdeb}  mod_Clean.f90                                                   
+	@${FC} -c ${DEFSdeb}  mod_TE.f90                                                      
+	@${FC} -c ${DEFSdeb}  mod_SMTB.f90                                                    
+	@${FC} -c ${DEFSdeb}  biseccion.f90
+	@${FC} -c ${DEFSdeb}  Simpson.f90
+	@${FC} -c ${DEFSdeb}  weighting_functions.f90
+	@${FC} -c ${DEFSdeb}  mod_DoS_2PT.f90   
+	@${FC} -c ${DEFSdeb}  mod_low_DoS.f90                                                  
+	@${FC} -c ${DEFSdeb}  mod_FFT.f90                               
+	@${FC} -c ${DEFSdeb}  mod_FEFF.f90                                                    
+	@${FC} -c ${DEFSdeb}  mod_BORDER.f90                                                  
+	@${FC} -c ${DEFSdeb}  mod_PDF.f90
+	@${FC} -c ${DEFSdeb}  mod_get_comand.f90
+	@${FC} -c ${DEFSdeb}  get_command.f90                   
+	
+	@echo "=================== COMPILACION: DEBUG ============"
+	
+	${FC} -o get ${MODULES} ${MAIN} ${LIB}
+	
+	@rm -f *.o
+	@rm -f *.mod
+fast:
+	@${FC} -c ${DEFSfst}  mod_count_lines.f90
+	@${FC} -c ${DEFSfst}  mod_ran2.f90
+	@${FC} -c ${DEFSfst}  mod_RDF.f90                                                     
+	@${FC} -c ${DEFSfst}  mod_Clean.f90                                                   
+	@${FC} -c ${DEFSfst}  mod_TE.f90                                                      
+	@${FC} -c ${DEFSfst}  mod_SMTB.f90                                                    
+	@${FC} -c ${DEFSfst}  biseccion.f90
+	@${FC} -c ${DEFSfst}  Simpson.f90
+	@${FC} -c ${DEFSfst}  weighting_functions.f90
+	@${FC} -c ${DEFSfst}  mod_DoS_2PT.f90   
+	@${FC} -c ${DEFSfst}  mod_low_DoS.f90                                                  
+	@${FC} -c ${DEFSfst}  mod_FFT.f90                               
+	@${FC} -c ${DEFSfst}  mod_FEFF.f90                                                    
+	@${FC} -c ${DEFSfst}  mod_BORDER.f90                                                  
+	@${FC} -c ${DEFSfst}  mod_PDF.f90
+	@${FC} -c ${DEFSfst}  mod_get_comand.f90
+	@${FC} -c ${DEFSfst}  get_command.f90                   
+	
+	@echo "=================== COMPILACION: FAST ============"
+
+	${FC} -o get ${MODULES} ${MAIN} ${LIB} 
+	
+	@rm -f *.o
+	@rm -f *.mod

@@ -1,0 +1,68 @@
+units           metal
+dimension       3
+boundary        p p p 
+
+atom_style      atomic
+atom_modify     map array sort 0 0.0
+read_data       atoms.dat
+
+pair_style      eam
+pair_coeff      * * Ni_u3.eam
+
+neighbor        2.0 bin
+neigh_modify    delay 4 every 4 check yes
+
+timestep        0.001
+
+# ---------------------------------------- Relajación
+thermo          50
+variable        step0 equal "step"
+thermo_style    custom  v_step0 pe
+
+minimize        1.0e-8 1.0e-9 10000 10000
+
+#---------------------------------------- Info de salida en archivos md.lammpstrj y out.lmp
+reset_timestep  0
+thermo          50
+
+compute         1 all orientorder/atom degrees 1 6 nnn NULL cutoff 3.05
+                
+dump            1 all custom 100 md.lammpstrj element x y z c_1[1] 
+dump_modify     1 element Ni
+                
+
+thermo_style    custom step  pe ke etotal temp
+
+
+#---------------------------------------- Seteo de termostato y su temperatura
+velocity        all create 1600. 2497816 rot yes mom yes dist gaussian
+
+variable        T1 equal 800.
+variable        T2 equal 850.
+variable        dT equal  50.
+
+compute         avgT all temp
+compute         avgE all pe
+fix             Peave all ave/time 10 2000 30000 c_avgT c_avgE file EvsT-lammps.dat
+
+
+#---------------------------------------- Rampa de Temp.
+variable a loop 18
+label loop
+
+#-------------- Equilibración 
+fix             1 all nvt temp ${T1} ${T2} 0.001
+run 5000
+unfix           1
+
+#-------------- Muestreo
+fix             1 all nvt temp ${T2} ${T2} 0.001
+run 25000
+unfix           1
+
+variable        T1 equal ${T1}+${dT}
+variable        T2 equal ${T2}+${dT}
+
+next a
+jump SELF loop
+
